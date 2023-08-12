@@ -1,0 +1,29 @@
+<p>Lista de Heroes</p>
+
+<!--cuando ponemos una variable en el ngIf y tiene valor lo toma como
+un true y undefained o null como false. En este caso indico que cuando sea
+true muestre el div, pero si es false muestre el contenedor(ng-template) con el que esta
+relacionado "nothingWasDeleted"-->
+<div *ngIf="deletedHero; else nothingWasDeleted">
+    <h3>Héroe borrado <small class="text-danger">{{ deletedHero }}</small> </h3>
+</div>
+<ng-template #nothingWasDeleted >
+    <h3>No ha borrado Heroe</h3>
+</ng-template>
+    
+
+<div *ngIf="heroesNames.length > 0" >
+    <button
+        (click)="removeLastHero()" 
+        class="btn btn-outline-danger" >
+        Borrar último héroe
+    </button>
+
+    <ul class="mt-2 list-group">
+        <li *ngFor="let nameHeroe of heroesNames"
+            class="list-group-item">
+            <strong> {{ nameHeroe }} </strong>
+        </li>
+    </ul>
+</div>
+
